@@ -1,18 +1,26 @@
-// Example using Fetch API to make POST request to backend server
-document.getElementById('generate-fusion-button').addEventListener('click', function() {
-  var item1 = document.getElementById('item1-input').value;
-  var item2 = document.getElementById('item2-input').value;
+$(document).ready(function() {
+  // Make draggable items
+  $('.draggable-item').draggable({
+    revert: true,
+    zIndex: 1000,
+    cursor: 'move',
+    helper: 'clone'
+  });
 
-  fetch('http://your-backend-server-url/generate_fusion', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ item1: item1, item2: item2 })
-  })
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById('fusion-output').innerText = data.fusion;
-  })
-  .catch(error => console.error('Error:', error));
+  // Make droppable container
+  $('#fusion-output').droppable({
+    accept: '.draggable-item',
+    drop: function(event, ui) {
+      var item1 = ui.helper.text(); // Get text of dragged item
+      var item2 = $(this).text();   // Get text of droppable container
+      var fusion = generate_fusion(item1, item2);
+      $(this).text(fusion);
+    }
+  });
+
+  // Function to generate fusion (dummy function for demonstration)
+  function generate_fusion(item1, item2) {
+    return item1 + ' + ' + item2 + ' = Fusion Product';
+  }
 });
+
