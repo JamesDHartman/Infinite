@@ -4,16 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Infinite Craft</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+    /* Add your CSS styles here */
+    .draggable-item {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      background-color: #ccc;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Infinite Craft</h1>
-  <label for="item1-input">Item 1:</label>
-  <input type="text" id="item1-input">
-  <label for="item2-input">Item 2:</label>
-  <input type="text" id="item2-input">
-  <button id="generate-fusion-button">Generate Fusion</button>
+  <div id="item1" class="draggable-item">Item 1</div>
+  <div id="item2" class="draggable-item">Item 2</div>
   <div id="fusion-output"></div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
